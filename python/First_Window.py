@@ -75,10 +75,10 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+    thread = Thread(target=Virtual_Mouse.virtual_mouse, args=(MainWindow,))
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-    thread = Thread(target=virtual_mouse(MainWindow))
     thread.start()
     try:
         sys.exit(app.exec_())

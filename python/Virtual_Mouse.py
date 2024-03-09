@@ -5,13 +5,14 @@ import pyautogui
 interrupt_flag = False
 
 def virtual_mouse(MainWindow):
+    index_x = 0;index_y = 0;thumb_x = 0;thumb_y = 0;right_x = 0;right_y = 0;
     global interrupt_flag
     cap = cv2.VideoCapture(0)
     hand_detector = mp.solutions.hands.Hands()
     drawing_utils = mp.solutions.drawing_utils
     app_window_geometry = MainWindow.geometry()
     screen_width, screen_height = pyautogui.size()
-    index_y = 0
+    
 
     try:
         while not interrupt_flag:
@@ -70,5 +71,5 @@ def virtual_mouse(MainWindow):
 
         # Release the camera when the loop is exited
         cap.release()
-    except KeyboardInterrupt:
+    except sys.exit():
         cap.release()
