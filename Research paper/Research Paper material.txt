@@ -9,7 +9,7 @@ To improve patient care, diagnosis, and treatment, the healthcare industry has a
 
 A technology known as augmented reality (AR) projects digital data and virtual objects over the physical world. AR produces a distinct and engaging user experience by fusing sensory inputs provided by computers with real-world encounters. Although the idea of augmented reality (AR) has been around for a while, recent developments in hardware and software have made it a practical solution for many industries, including healthcare.
 
-AR has several uses in the medical industry, from assisting surgeons to helping with patient care and medical education. For instance, during operations, AR can be utilised to give surgeons real-time data, visualisations, and navigational advice. This increases treatment precision and accuracy while also enhancing patient safety and lowering the likelihood of problems.\
+AR has several uses in the medical industry, from assisting surgeons to helping with patient care and medical education. For instance, during operations, AR can be utilised to give surgeons real-time data, visualisations, and navigational advice. This increases treatment precision and accuracy while also enhancing patient safety and lowering the likelihood of problems.
 
 
 ##The Advent of Virtual Reality (VR) in Healthcare
@@ -26,3 +26,5 @@ Simulated surgical training and skill improvement is one of the most revolutiona
 
 2. Realistic Surgical Simulations:
 By simulating complex anatomical features and surgical procedures, AR and VR make it possible to create incredibly realistic surgical simulators. Learners can practise a variety of operations, from simple suturing to complicated surgeries, in virtual environments that can be tailored to imitate different medical situations and complications.
+
+Link : https://www.linkedin.com/pulse/how-augmented-realityar-virtual-realityvr-healthcare-sector-mutabazi/
