@@ -1,23 +1,6 @@
 VR Education and training
 https://www.britannica.com/technology/virtual-reality/Education-and-training
 
-##The Rise of Augmented Reality(AR) and Virtual Reality(VR) in Healthcare
-
-To improve patient care, diagnosis, and treatment, the healthcare industry has always been on the front edge of embracing innovative technologies. The fusion of augmented reality (AR) and virtual reality (VR) has emerged in recent years as a game-changer, radically altering how patients and medical professionals engage with healthcare systems. By bridging the gap between the physical and digital worlds, these immersive technologies are adding a new level of complexity to medicine and enabling more people to access healthcare services and enjoy better experiences.
-
-##The Emergence of Augmented Reality (AR) in Healthcare
-
-A technology known as augmented reality (AR) projects digital data and virtual objects over the physical world. AR produces a distinct and engaging user experience by fusing sensory inputs provided by computers with real-world encounters. Although the idea of augmented reality (AR) has been around for a while, recent developments in hardware and software have made it a practical solution for many industries, including healthcare.
-
-AR has several uses in the medical industry, from assisting surgeons to helping with patient care and medical education. For instance, during operations, AR can be utilised to give surgeons real-time data, visualisations, and navigational advice. This increases treatment precision and accuracy while also enhancing patient safety and lowering the likelihood of problems.
-
-
-##The Advent of Virtual Reality (VR) in Healthcare
-
-By totally removing users from the outside world and replacing it with a computer-generated experience, virtual reality (VR) submerges people in a wholly simulated environment. The development of high-quality head-mounted displays and potent computing power has been the main driver of VR's explosive expansion in recent years.
-Virtual reality (VR) is revolutionising medical education and training. In order to give medical students hands-on experience without using cadavers or live patients, realistic simulations of sophisticated medical procedures and surgical operations are now available. VR is also showing promise as a tool for pain management and therapy, enabling patients to escape their physical anguish by submerging themselves in virtual worlds.
-
-
 ## AR and VR in Medical Training and Education
 
 1. Simulated Surgical Training and Skill Development:
@@ -28,3 +11,37 @@ Simulated surgical training and skill improvement is one of the most revolutiona
 By simulating complex anatomical features and surgical procedures, AR and VR make it possible to create incredibly realistic surgical simulators. Learners can practise a variety of operations, from simple suturing to complicated surgeries, in virtual environments that can be tailored to imitate different medical situations and complications.
 
 Link : https://www.linkedin.com/pulse/how-augmented-realityar-virtual-realityvr-healthcare-sector-mutabazi/
+
+
+
+##Training 2.0: The Role of AR and VR in modern learning and development - 3 mins read
+
+Augmented reality (AR) and virtual reality (VR) are increasingly being used in training and education as a way to create immersive and interactive learning experiences. Here are some ways that AR and VR are shaping up the training industry:
+
+1. Improving retention: AR and VR can make learning more engaging and interactive, which can help improve retention of information. Studies have shown that learners retain more information when they are actively engaged in the learning process.
+
+2. Enhancing experiential learning: AR and VR can create immersive and realistic learning environments that allow learners to experience situations and scenarios in a way that is not possible in the real world. This can be particularly useful for training in fields such as healthcare, aviation, and military.
+
+3. Reducing costs: AR and VR can be more cost-effective than traditional training methods, as they eliminate the need for travel and other expenses. They can also be used to train large groups of people simultaneously.
+
+4. Increasing accessibility: AR and VR can be accessed from anywhere with an internet connection, making training more accessible to a wider audience. This can be particularly useful for learners who are unable to attend in-person training due to geographical or other constraints.
+
+5. Providing real-time feedback: AR and VR can provide learners with real-time feedback and guidance, helping them to learn and improve more quickly. This can be particularly useful for hands-on training, where learners need to practice skills and techniques.
+
+There are many types of training that can be transformed using AR and VR technology. Here are a few examples:
+
+1. Hands-on training: AR and VR can create immersive, interactive environments that allow trainees to practice hands-on skills in a safe and controlled setting. This can be especially useful for training in fields such as construction, manufacturing, and healthcare.
+
+2. Safety training: AR and VR can be used to create simulated emergency scenarios, allowing trainees to practice responding to and resolving dangerous situations.
+
+3. Leadership development: VR can be used to create interactive leadership simulations, allowing trainees to practice decision-making and communication skills in a variety of realistic scenarios.
+
+4. Soft skills training: AR and VR can be used to create interactive role-playing exercises, allowing trainees to practice communication, conflict resolution, and other important soft skills.
+
+5. Product training: AR and VR can be used to create interactive product demonstrations and training sessions, allowing trainees to learn about new products in a more engaging and interactive way.
+
+link: https://www.linkedin.com/pulse/training-20-role-ar-vr-modern-learning-development-3-sharma-/
+
+##The Top 6 Industries for Enterprise AR/VR in 2021
+
+link: https://www.xrtoday.com/mixed-reality/the-top-6-industries-for-enterprise-ar-vr-in-2021/
