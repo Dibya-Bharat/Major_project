@@ -1,3 +1,11 @@
+##Related work
+links:
+
+https://www.researchgate.net/publication/370676159_Analyzing_augmented_reality_AR_and_virtual_reality_VR_recent_development_in_education
+https://www.researchgate.net/publication/374998929_Impact_of_Virtual_Reality_Vr_and_Augmented_Reality_Ar_in_Education
+https://www.researchgate.net/publication/349389668_Virtual_Reality_for_Pilot_Training_Study_of_Cardiac_Activity
+
+
 VR Education and training
 https://www.britannica.com/technology/virtual-reality/Education-and-training
 
@@ -45,3 +53,5 @@ link: https://www.linkedin.com/pulse/training-20-role-ar-vr-modern-learning-deve
 ##The Top 6 Industries for Enterprise AR/VR in 2021
 
 link: https://www.xrtoday.com/mixed-reality/the-top-6-industries-for-enterprise-ar-vr-in-2021/
+
+
