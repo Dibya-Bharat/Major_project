@@ -20,6 +20,14 @@ https://www.researchgate.net/publication/374910266_The_Impact_of_Virtual_Reality
 https://www.intechopen.com/journals/1/articles/197
 https://ieeexplore.ieee.org/abstract/document/10369130
 
+proposed work:
+hypotheses:
+Virtual Reality (VR)  and  Augmented  Reality (AR) researches  in education have increased dramatically in the past ten years
+VR and AR adoption in education have exponential growth during the outbreak of Covid-19 pandemic.
+VR and AR have enhanced communication and students-educators interaction in e-learning. 
+There is no strong relationship between VR & AR and its impact in education
+There is a strong relationship between VR & AR and its impact in education
+
 VR Education and training
 https://www.britannica.com/technology/virtual-reality/Education-and-training
 
