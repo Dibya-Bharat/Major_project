@@ -1,10 +1,24 @@
 ##Related work
 links:
-
+education:
 https://www.researchgate.net/publication/370676159_Analyzing_augmented_reality_AR_and_virtual_reality_VR_recent_development_in_education
 https://www.researchgate.net/publication/374998929_Impact_of_Virtual_Reality_Vr_and_Augmented_Reality_Ar_in_Education
+pilot training:
 https://www.researchgate.net/publication/349389668_Virtual_Reality_for_Pilot_Training_Study_of_Cardiac_Activity
-
+healthcare
+https://pubmed.ncbi.nlm.nih.gov/34400451/
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8281102/
+https://www.researchgate.net/publication/323916650_VR_and_AR_Applications_in_Medical_Practice_and_Education
+https://healthtechmagazine.net/article/2022/12/ar-vr-medical-training-2023-perfcon
+https://bmjopen.bmj.com/content/11/8/e047004
+driver training:
+https://vrvisiongroup.com/using-vr-and-augmented-reality-to-aid-driver-training/
+https://link.springer.com/chapter/10.1007/978-3-030-94102-4_5
+soft skills:
+https://www.frontiersin.org/articles/10.3389/frvir.2021.645153/full
+https://www.researchgate.net/publication/374910266_The_Impact_of_Virtual_Reality_Technology_on_Student_Engagement_and_Learning_Outcomes_in_Higher_Education
+https://www.intechopen.com/journals/1/articles/197
+https://ieeexplore.ieee.org/abstract/document/10369130
 
 VR Education and training
 https://www.britannica.com/technology/virtual-reality/Education-and-training
