@@ -1,24 +1,42 @@
 ##Related work
 links:
-education:
-https://www.researchgate.net/publication/370676159_Analyzing_augmented_reality_AR_and_virtual_reality_VR_recent_development_in_education
-https://www.researchgate.net/publication/374998929_Impact_of_Virtual_Reality_Vr_and_Augmented_Reality_Ar_in_Education
-pilot training:
-https://www.researchgate.net/publication/349389668_Virtual_Reality_for_Pilot_Training_Study_of_Cardiac_Activity
-healthcare
-https://pubmed.ncbi.nlm.nih.gov/34400451/
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8281102/
-https://www.researchgate.net/publication/323916650_VR_and_AR_Applications_in_Medical_Practice_and_Education
-https://healthtechmagazine.net/article/2022/12/ar-vr-medical-training-2023-perfcon
-https://bmjopen.bmj.com/content/11/8/e047004
-driver training:
-https://vrvisiongroup.com/using-vr-and-augmented-reality-to-aid-driver-training/
-https://link.springer.com/chapter/10.1007/978-3-030-94102-4_5
-soft skills:
-https://www.frontiersin.org/articles/10.3389/frvir.2021.645153/full
-https://www.researchgate.net/publication/374910266_The_Impact_of_Virtual_Reality_Technology_on_Student_Engagement_and_Learning_Outcomes_in_Higher_Education
-https://www.intechopen.com/journals/1/articles/197
-https://ieeexplore.ieee.org/abstract/document/10369130
+1. education:
+a.https://www.researchgate.net/publication/370676159_Analyzing_augmented_reality_AR_and_virtual_reality_VR_recent_development_in_education 
+author : Abdullah M. Al-Ansi
+b.https://www.researchgate.net/publication/374998929_Impact_of_Virtual_Reality_Vr_and_Augmented_Reality_Ar_in_Education 
+author : Dr A Udaya Shankar
+
+2. pilot training:
+a. https://www.researchgate.net/publication/349389668_Virtual_Reality_for_Pilot_Training_Study_of_Cardiac_Activity
+author : Patrice Labedan
+
+3. healthcare:
+a. https://pubmed.ncbi.nlm.nih.gov/34400451/
+author : Zain Hussain 
+b. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8281102/
+author : Poshmaal Dhar
+c. https://www.researchgate.net/publication/323916650_VR_and_AR_Applications_in_Medical_Practice_and_Education
+author : Min-Chai Hsieh
+d. https://healthtechmagazine.net/article/2022/12/ar-vr-medical-training-2023-perfcon
+author : Brian T. Horowitz
+e. https://bmjopen.bmj.com/content/11/8/e047004
+author : Dominic Mark Ng
+
+4. driver training:
+a. https://vrvisiongroup.com/using-vr-and-augmented-reality-to-aid-driver-training/
+author : 
+b. https://link.springer.com/chapter/10.1007/978-3-030-94102-4_5
+author : 
+
+5. soft skills:
+a. https://www.frontiersin.org/articles/10.3389/frvir.2021.645153/full
+author : Biao Xie
+b.https://www.researchgate.net/publication/374910266_The_Impact_of_Virtual_Reality_Technology_on_Student_Engagement_and_Learning_Outcomes_in_Higher_Education
+author : İbrahim Yaşar Kazu
+c. https://www.intechopen.com/journals/1/articles/197
+author : Bill Boland
+d. https://ieeexplore.ieee.org/abstract/document/10369130
+author : K. Sai Nihal
 
 proposed work:
 hypotheses:
