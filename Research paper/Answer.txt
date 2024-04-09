@@ -2,17 +2,26 @@
 The usage and adoption of Augmented Reality (AR) and Virtual Reality (VR) have been increasing in various fields. Here are some key points:
 
 Adoption and Usage Statistics:
+(1) 74 Virtual Reality Statistics You Must Know in 2024: Adoption, Usage .... https://financesonline.com/virtual-reality-statistics/.
 - The global shipments of AR/VR headsets were 5.5 million units in 2020 and are projected to reach 43.5 million by 2025.
 - The market size of VR headsets was $5.5 billion in 2019 and is projected to reach $18.6 billion by 2026.
 - The global AR/VR software and hardware market size was valued at $2.6 billion in 2020, which will jump to $5.1 billion by 2023.
+
+(2) 58 Augmented Reality Statistics to Unveil AR’s Growth - G2. https://learn.g2.com/augmented-reality-statistics.
 - The AR market is projected to hit a value of $50 billion by 2024.
 
 Industry Adoption:
+(3) Augmented and virtual reality: The promise and peril of immersive .... https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/augmented-and-virtual-reality-the-promise-and-peril-of-immersive-technologies.
 - The strongest demand for AR/VR currently comes from industries in the creative economy—specifically, gaming, live events, video entertainment, and retail.
+
+(4) The Increased Adoption of Augmented and Virtual Reality and its ... - AAF. https://www.americanactionforum.org/insight/the-increased-adoption-of-augmented-and-virtual-reality-and-its-challenges-a-primer/.
 - AR/VR technologies have increasingly been employed by a wide range of sectors —from education and healthcare to retail and real estate.
+
+(2) 58 Augmented Reality Statistics to Unveil AR’s Growth - G2. https://learn.g2.com/augmented-reality-statistics.
 - AR technology blends the physical and digital worlds - be it gaming or consumer goods, AR and VR help businesses provide a better experience to their customers.
 
 Consumer Engagement:
+(2) 58 Augmented Reality Statistics to Unveil AR’s Growth - G2. https://learn.g2.com/augmented-reality-statistics.
 - The level of engagement with AR products is double, making them 200% more captivating than their non-AR counterparts.
 - Conversion rates are found to be 40% higher with AR.
 These statistics indicate a promising future for AR/VR technologies as they continue to redefine the ways we interact with technology..
