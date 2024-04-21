@@ -1,0 +1,16 @@
+Data:
+input from user: 
+category of place, trip duration, budget, state, number of members, sort: public rating, travel mode preference, Accomodation preference.
+
+input for model:
+state: places: 1. Hotels, Resorts, Vacation rentals, hostels etc: name, price, type of rooms, family accomodating or not, rating, crowd, distance limit
+	2. Restaurant: name, ethnicity type, Type(Veg or non veg), location, price, crowd, availability, distance limit, rating
+	3. tourism: name, category, nearby places, rating 
+traveling: inbound: mode: airplane: price, classes, timings, 
+bus: types, name, routes, price, ratings.
+Train: price, class, timings, routes, duration.
+within: bus: types, name, routes, price.
+taxi: name, price, ratings.
+autorickshaw: price.
+
+	
