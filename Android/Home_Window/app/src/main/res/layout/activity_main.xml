@@ -58,8 +58,9 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/royalblue"
             android:text="Login"
+            android:textColor="@color/black"
             android:textSize="12pt"
             android:textStyle="bold" />
 
@@ -72,8 +73,9 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/royalblue"
             android:text="SignUp"
+            android:textColor="@color/black"
             android:textSize="12pt"
             android:textStyle="bold" />
     </LinearLayout>
