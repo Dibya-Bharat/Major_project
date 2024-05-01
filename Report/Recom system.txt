@@ -13,4 +13,10 @@ within: bus: types, name, routes, price.
 taxi: name, price, ratings.
 autorickshaw: price.
 
-	
+
+
+
+NOte: plan: state, places(sorted by category,rating), travel mode, accomodation
+places: model
+travel model: api
+accomodation: api
