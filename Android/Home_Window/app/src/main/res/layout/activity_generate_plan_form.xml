@@ -17,8 +17,10 @@
         android:outlineAmbientShadowColor="@color/royalblue"
         android:outlineProvider="bounds"
         android:padding="20dp"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="202dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
@@ -68,7 +70,6 @@
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:prompt=""
             tools:layout_editor_absoluteX="261dp"
             tools:layout_editor_absoluteY="237dp" />
 

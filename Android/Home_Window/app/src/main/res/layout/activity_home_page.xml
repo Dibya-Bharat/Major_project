@@ -9,29 +9,7 @@
 
     <!-- Top Navigation -->
 
-    <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="318dp"
-        android:layout_height="43dp"
-        android:padding="8dp"
-        android:text="Tourism Recommendation System"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Bottom Navigation -->
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <!--bottom Navigation-->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
@@ -44,11 +22,11 @@
         android:padding="8dp">
 
         <Button
-            android:id="@+id/btnRecommendationGeneration"
+            android:id="@+id/btnRecomGen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Recommendation Generation" />
+            android:text="Plan Gen" />
 
         <Button
             android:id="@+id/btnAllPlans"

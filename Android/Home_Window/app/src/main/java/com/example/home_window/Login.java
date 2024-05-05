@@ -101,7 +101,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // if the code is correct and the task is successful
                             // we are sending our user to new activity.
-                            Intent i = new Intent(Login.this, HomeActivity.class);
+                            Intent i = new Intent(Login.this, Home_page.class);
                             startActivity(i);
                             finish();
                         } else {

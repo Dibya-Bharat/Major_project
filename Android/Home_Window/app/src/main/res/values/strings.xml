@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Home_Window</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string-array name="categories1">
+        <item>Cultural</item>
+        <item>Entertainment</item>
+        <item>Historical</item>
+        <item>Mall</item>
+        <item>Market</item>
+        <item>Museum</item>
+        <item>Natural Beauty</item>
+        <item>Park</item>
+        <item>Religious</item>
+        <item>Wildlife</item>
+        <item>Zoo</item>
+    </string-array>
+    <string-array name="categories2">
+        <item>Adventure Sports</item>
+        <item>Hill Station</item>
+        <item>Historical</item>
+        <item>Natural Beauty</item>
+        <item>Religious</item>
+        <item>Shopping</item>
+        <item>Wildlife</item>
+    </string-array>
 </resources>
