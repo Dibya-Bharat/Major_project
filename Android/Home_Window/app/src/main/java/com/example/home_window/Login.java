@@ -19,6 +19,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -115,16 +121,34 @@ public class Login extends AppCompatActivity {
 
 
     private void sendVerificationCode(String number) {
-        // this method is used for getting
-        // OTP on user phone number.
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber(number)		 // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)				 // Activity (for callback binding)
-                        .setCallbacks(mCallBack)		 // OnVerificationStateChangedCallbacks
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
+        // First, check if the phone number exists in the database
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+        Query query = usersRef.orderByChild("phone").equalTo(number);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // If the phone number exists in the database, send OTP
+                    PhoneAuthOptions options =
+                            PhoneAuthOptions.newBuilder(mAuth)
+                                    .setPhoneNumber(number)
+                                    .setTimeout(60L, TimeUnit.SECONDS)
+                                    .setActivity(Login.this)
+                                    .setCallbacks(mCallBack)
+                                    .build();
+                    PhoneAuthProvider.verifyPhoneNumber(options);
+                } else {
+                    // If the phone number does not exist in the database, show a toast message
+                    Toast.makeText(Login.this, "Phone number not found. Please sign up first.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors if any
+                Toast.makeText(Login.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // callback method is called on Phone auth provider.
