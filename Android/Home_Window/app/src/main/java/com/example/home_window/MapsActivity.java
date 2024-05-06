@@ -27,7 +27,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Define a variable to hold the Places API key.
-        String apiKey = BuildConfig.PLACES_API_KEY;
+        String apiKey = BuildConfig.MAPS_API_KEY;
 
         // Log an error if apiKey is not set.
         if (TextUtils.isEmpty(apiKey) || apiKey.equals("DEFAULT_API_KEY")) {

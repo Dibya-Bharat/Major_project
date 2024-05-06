@@ -8,14 +8,21 @@
     tools:context=".Home_page">
 
     <!-- Top Navigation -->
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/royalblue"
+        app:title="Home"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"/>
     <!--bottom Navigation-->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#FFFFFF"
+        android:background="@color/royalblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
