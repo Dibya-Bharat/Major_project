@@ -26,7 +26,7 @@
             android:name=".Home_page"
             android:exported="false" />
         <activity
-            android:name=".recom_form"
+            android:name=".User"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.

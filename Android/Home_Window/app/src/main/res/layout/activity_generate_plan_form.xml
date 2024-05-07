@@ -8,6 +8,7 @@
     tools:context=".Generate_Plan_form">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="374dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -28,9 +29,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="State"
-            android:textSize="20dp"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="56dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -42,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delhi"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 tools:layout_editor_absoluteX="105dp"
                 tools:layout_editor_absoluteY="45dp" />
 
@@ -51,60 +56,103 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Uttarakhand"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 tools:layout_editor_absoluteX="105dp"
                 tools:layout_editor_absoluteY="104dp" />
 
         </RadioGroup>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category of Tourism Spots:"
-            android:textSize="20dp"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="190dp" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="261dp"
-            tools:layout_editor_absoluteY="237dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                tools:layout_editor_absoluteX="261dp"
+                tools:layout_editor_absoluteY="237dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Trip duration"
-            android:textSize="20dp"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="282dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextText2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:ems="10"
             android:inputType="text"
             android:text="0 days"
             tools:layout_editor_absoluteX="131dp"
-            tools:layout_editor_absoluteY="272dp" />
+            tools:layout_editor_absoluteY="272dp"
+            android:autofillHints="0"
+            tools:ignore="LabelFor" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Budget"
-            android:textSize="20dp"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="345dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextText3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:ems="10"
             android:inputType="text"
             android:text="0"
@@ -112,5 +160,18 @@
             tools:layout_editor_absoluteY="327dp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Generate"
+        android:backgroundTint="#000080"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
