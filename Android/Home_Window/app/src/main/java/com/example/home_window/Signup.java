@@ -55,10 +55,10 @@ public class Signup extends AppCompatActivity {
         String userId = databaseReference.push().getKey();
 
         // Create User object, create class for the user and replace User with user class name
-        User user = new User(userId, name, phone);
+        //User user = new User(userId, name, phone);
 
         // Store user information in Firebase Database
-        databaseReference.child(userId).setValue(user);
+        //databaseReference.child(userId).setValue(user);
 
         // Return to MainActivity
         finish();

@@ -14,7 +14,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 public class Home_page extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private Button bt1;
+    private Button bt1, livesupport;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +23,18 @@ public class Home_page extends AppCompatActivity {
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         bt1 = findViewById(R.id.btnRecomGen);
+        livesupport = findViewById(R.id.btnLiveSupport);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home_page.this, Generate_Plan_form.class);
+                startActivity(intent);
+            }
+        });
+        livesupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home_page.this, Live_Support.class);
                 startActivity(intent);
             }
         });

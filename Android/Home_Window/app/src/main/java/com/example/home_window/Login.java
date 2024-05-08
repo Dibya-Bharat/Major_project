@@ -115,6 +115,7 @@ public class Login extends AppCompatActivity {
                             // displaying an error message to the user.
                             Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
+                        return null;
                     }
                 });
     }
