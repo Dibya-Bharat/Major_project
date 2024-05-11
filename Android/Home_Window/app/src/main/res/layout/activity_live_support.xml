@@ -7,20 +7,34 @@
     android:background="#87CEEB"
     tools:context=".Live_Support">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/royalblue"
+        app:title="Live Support"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <LinearLayout
         android:id="@+id/btnav"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/royalblue"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_rectangle"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:outlineAmbientShadowColor="@color/royalblue"
+        android:outlineProvider="bounds"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/Restaurant"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
@@ -28,7 +42,7 @@
 
         <Button
             android:id="@+id/Hotels"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
@@ -36,7 +50,7 @@
 
         <Button
             android:id="@+id/Hospitals"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
@@ -44,7 +58,7 @@
 
         <Button
             android:id="@+id/Police"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"

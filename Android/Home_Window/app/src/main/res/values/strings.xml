@@ -28,4 +28,22 @@
         <item>4.0+</item>
         <item>3.5+</item>
     </string-array>
+    <string-array name="Accomodation_types">
+        <item>Hotels</item>
+        <item>Guest Houses</item>
+        <item>Hostels</item>
+        <item>Resort</item>
+    </string-array>
+    <string-array name="Travel_Modes">
+        <item>Car</item>
+        <item>Bus</item>
+        <item>Auto-Rickshaw</item>
+        <item>Train</item>
+        <item>Aeroplane</item>
+    </string-array>
+    <string-array name="Travel_Modes2">
+        <item>Car</item>
+        <item>Bus</item>
+        <item>Auto-Rickshaw</item>
+    </string-array>
 </resources>

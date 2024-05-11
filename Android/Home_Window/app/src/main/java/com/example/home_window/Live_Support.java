@@ -1,4 +1,5 @@
 package com.example.home_window;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
@@ -24,9 +25,13 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import com.google.firebase.auth.FirebaseAuth;
 public class Live_Support extends AppCompatActivity {
 
+    private FirebaseAuth firebaseAuth;
     private Button restaurantButton, hotelsButton, hospitalsButton, policeButton;
     private FusedLocationProviderClient fusedLocationClient;
     private static final int PERMISSION_ID = 44;
@@ -36,7 +41,9 @@ public class Live_Support extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_support);
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        firebaseAuth = FirebaseAuth.getInstance();
         // Initialize fusedLocationClient
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -172,6 +179,26 @@ public class Live_Support extends AppCompatActivity {
                 Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.menu_logout) {
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout(){
+        firebaseAuth.signOut();
+        Intent intent = new Intent(Live_Support.this, MainActivity.class);
+        startActivity(intent);
     }
 }
 

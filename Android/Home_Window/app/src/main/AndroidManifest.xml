@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Home_Window"
         tools:targetApi="31">
         <activity
+            android:name=".Allplans"
+            android:exported="false" />
+        <activity
             android:name=".Live_Support"
             android:exported="false" />
         <activity
@@ -67,7 +70,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-
     </application>
 
 </manifest>
