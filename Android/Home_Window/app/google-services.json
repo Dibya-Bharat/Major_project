@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "895908920209",
+    "firebase_url": "https://user-login-c5b70-default-rtdb.firebaseio.com",
     "project_id": "user-login-c5b70",
     "storage_bucket": "user-login-c5b70.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "895908920209-pkqhmcct53qg56goot3qnotd02cjq8t6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.home_window",
+            "certificate_hash": "b17bb3ff8dad1664b5400ee14bacfb83a1c8acd9"
+          }
+        },
         {
           "client_id": "895908920209-2urpd1dl16v8gvjdo7o5j4iamgg4i4b4.apps.googleusercontent.com",
           "client_type": 3
