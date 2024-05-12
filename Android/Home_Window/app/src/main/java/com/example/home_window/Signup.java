@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,11 +56,19 @@ public class Signup extends AppCompatActivity {
         // Generate a unique key for the user
         String userId = databaseReference.push().getKey();
 
+        // Check if userId is null
+        if (userId == null) {
+            // Handle the case where userId is null
+            // For example, display an error message
+            Toast.makeText(this, "Failed to create user. Please try again.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Create User object, create class for the user and replace User with user class name
-        //User user = new User(userId, name, phone);
+        User user = new User(userId, name, phone);
 
         // Store user information in Firebase Database
-        //databaseReference.child(userId).setValue(user);
+        databaseReference.child(userId).setValue(user);
 
         // Return to MainActivity
         finish();
