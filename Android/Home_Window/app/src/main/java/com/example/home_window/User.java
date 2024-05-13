@@ -12,7 +12,7 @@ public class User {
     public User(String userId, String name, String phone) {
         this.userId = userId;
         this.name = name;
-        this.phone = phone;
+        this.phone = "+91" +phone;
     }
 
     public String getUserId() {
@@ -36,6 +36,6 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = "+91" +phone;
     }
 }

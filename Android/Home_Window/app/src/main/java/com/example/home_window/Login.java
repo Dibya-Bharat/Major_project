@@ -3,6 +3,7 @@ package com.example.home_window;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,11 +74,13 @@ public class Login extends AppCompatActivity {
                     // if the text field is not empty we are calling our
                     // send OTP method for getting OTP from Firebase.
                     String phone = "+91" + edtPhone.getText().toString();
-
+                    Log.d("Get number",phone);
                     sendVerificationCode(phone);
                 }
             }
         });
+
+
 
         // initializing on click listener
         // for verify otp button
@@ -98,76 +101,100 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void signInWithCredential(PhoneAuthCredential credential) {
-        // inside this method we are checking if
-        // the code entered is correct or not.
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // if the code is correct and the task is successful
-                            // we are sending our user to new activity.
-                            Intent i = new Intent(Login.this, Home_page.class);
-                            startActivity(i);
-                            finish();
-                        } else {
-                            // if the code is not correct then we are
-                            // displaying an error message to the user.
-                            Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                });
-    }
-
-    private void sendVerificationCode(String number) {
-        // Get a reference to the Firebase database
+    private void sendVerificationCode(final String number) {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
-        // Query to retrieve the phone number based on the given number
-        Query query = usersRef.orderByChild("phone").equalTo(number);
-
-        // Add a listener to retrieve the data
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        // Add a ValueEventListener to check if the phone number already exists
+        ValueEventListener phoneListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // If the phone number exists in the database
-                    // Iterate through the dataSnapshot to retrieve the phone number
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String phoneNumber = snapshot.child("phone").getValue(String.class);
-                        // Print the retrieved phone number
-                        Toast.makeText(Login.this, phoneNumber, Toast.LENGTH_SHORT).show();
-
-                        // Send OTP after retrieving the phone number
-                        sendOTP(number);
+                boolean phoneNumberExists = false;
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    String phone = userSnapshot.child("phone").getValue(String.class);
+                    if (phone != null && phone.equals(number)) {
+                        //sendOTP(number);
+                        PhoneAuthOptions options =
+                                PhoneAuthOptions.newBuilder(mAuth)
+                                        .setPhoneNumber(number)
+                                        .setTimeout(60L, TimeUnit.SECONDS)
+                                        .setActivity(Login.this)
+                                        .setCallbacks(mCallBack)
+                                        .build();
+                        PhoneAuthProvider.verifyPhoneNumber(options);
+                        Toast.makeText(Login.this, "OTP sent successfully.", Toast.LENGTH_SHORT).show();
+                        return; // Exit the loop since OTP is sent
                     }
-                } else {
-                    // If the phone number does not exist in the database, show a toast message
-                    Toast.makeText(Login.this, "Phone number not found. Please sign up first.", Toast.LENGTH_SHORT).show();
                 }
+                // If phone number does not exist in any user snapshot, show a toast message
+                Toast.makeText(Login.this, "Phone number not registered. Please proceed with SignUp.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle errors if any
+                // Handle database error
                 Toast.makeText(Login.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+
+        // Attach the listener to the users reference
+        usersRef.addListenerForSingleValueEvent(phoneListener);
     }
+
+
+
+
+
+
+
+    //    private void sendVerificationCode(String number) {
+//        // Get a reference to the Firebase database
+//        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+//
+//        // Query to retrieve the phone number based on the given number
+//        Query query = usersRef.orderByChild("phone").equalTo(number);
+//
+//
+//        // Add a listener to retrieve the data
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    // If the phone number exists in the database
+//                    // Iterate through the dataSnapshot to retrieve the phone number
+//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                        String phoneNumber = snapshot.child("phone").getValue(String.class);
+//                        // Print the retrieved phone number
+//                        Toast.makeText(Login.this, phoneNumber, Toast.LENGTH_SHORT).show();
+//
+//                        // Send OTP after retrieving the phone number
+//                        sendOTP(number);
+//                        return;
+//                    }
+//                } else {
+//                    // If the phone number does not exist in the database, show a toast message
+//                    Toast.makeText(Login.this, "Phone number not found. Please sign up first.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                // Handle errors if any
+//                Toast.makeText(Login.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
     // Method to send OTP after retrieving the phone number
-    private void sendOTP(String number) {
-        // PhoneAuthOptions for sending OTP
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber(number)
-                        .setTimeout(60L, TimeUnit.SECONDS)
-                        .setActivity(Login.this)
-                        .setCallbacks(mCallBack)
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
-    }
+//    private void sendOTP(String number) {
+//        // PhoneAuthOptions for sending OTP
+//        PhoneAuthOptions options =
+//                PhoneAuthOptions.newBuilder(mAuth)
+//                        .setPhoneNumber(number)
+//                        .setTimeout(60L, TimeUnit.SECONDS)
+//                        .setActivity(Login.this)
+//                        .setCallbacks(mCallBack)
+//                        .build();
+//        PhoneAuthProvider.verifyPhoneNumber(options);
+//    }
 
     /*private void sendVerificationCode(String number) {
         // First, check if the phone number exists in the database
@@ -261,4 +288,28 @@ public class Login extends AppCompatActivity {
         // calling sign in method.
         signInWithCredential(credential);
     }
+
+    private void signInWithCredential(PhoneAuthCredential credential) {
+        // inside this method we are checking if
+        // the code entered is correct or not.
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // if the code is correct and the task is successful
+                            // we are sending our user to new activity.
+                            Intent i = new Intent(Login.this, Home_page.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            // if the code is not correct then we are
+                            // displaying an error message to the user.
+                            Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+    }
 }
+
