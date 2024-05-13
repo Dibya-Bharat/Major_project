@@ -74,11 +74,10 @@ public class Generate_Plan_form extends AppCompatActivity {
         // Put the data you want to pass into the Intent using a key-value pair
         intent.putExtra("KEY1", radioValue);
         intent.putExtra("KEY2", spinner1Value);
-        intent.putExtra("KEY3", spinner2Value);
-        intent.putExtra("KEY4", floatValue);
-        intent.putExtra("KEY5", spinner3Value);
-        intent.putExtra("KEY6", spinner4Value);
-        intent.putExtra("KEY7", results);
+        intent.putExtra("KEY3", floatValue);
+        intent.putExtra("KEY4", spinner3Value);
+        intent.putExtra("KEY5", spinner4Value);
+        intent.putExtra("KEY6", results);
 
         // Start the next activity
         startActivity(intent);
