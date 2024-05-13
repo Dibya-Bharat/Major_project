@@ -39,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:hint="Enter your name"
+            android:inputType="text" />
 
         <Space
             android:layout_width="match_parent"
@@ -62,8 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone"
-            android:text="0000000000" />
+            android:hint="Enter your phone number"
+            android:inputType="phone" />
     </LinearLayout>
 
     <Button
