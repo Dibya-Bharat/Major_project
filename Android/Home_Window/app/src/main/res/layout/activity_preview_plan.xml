@@ -7,7 +7,17 @@
     android:background="#87CEEB"
     tools:context=".Preview_Plan">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/plantoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/royalblue"
+        app:title="Plan"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="374dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -41,45 +51,45 @@
                 android:id="@+id/Category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Category"
-                android:textSize="24sp"
-                android:layout_weight="1"/>
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/Rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Rating"
-                android:textSize="24sp"
-                android:layout_weight="1" />
+                android:textSize="24sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/Place1"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Place1"
-            android:textSize="24sp"
             android:layout_marginStart="20dp"
-            android:clickable="true" />
+            android:clickable="true"
+            android:text="Place1"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/Place2"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Place2"
-            android:textSize="24sp"
             android:layout_marginStart="20dp"
-            android:clickable="true" />
+            android:clickable="true"
+            android:text="Place2"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/Place3"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Place3"
-            android:textSize="24sp"
             android:layout_marginStart="20dp"
-            android:clickable="true" />
+            android:clickable="true"
+            android:text="Place3"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/Accommodation"
@@ -97,4 +107,15 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/savebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Plan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.321" />
 </androidx.constraintlayout.widget.ConstraintLayout>
