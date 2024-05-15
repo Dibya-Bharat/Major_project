@@ -12,7 +12,7 @@ import org.tensorflow.lite.Interpreter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
+import android.widget.ArrayAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +27,7 @@ public class Generate_Plan_form extends AppCompatActivity {
 
     private FirebaseDatabase db;
     private DatabaseReference reference;
-
+    private Button generateButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +46,20 @@ public class Generate_Plan_form extends AppCompatActivity {
         spinner2 = findViewById(R.id.spinner2);
         spinner3 = findViewById(R.id.spinner3);
         spinner4 = findViewById(R.id.spinner4);
-        Button generateButton = findViewById(R.id.button3);
-
+        generateButton = findViewById(R.id.button3);
+        // Set default spinner values
+        //updateSpinner1Values(R.array.categories1);
+        // Set listeners for radio buttons
+        radioButton1.setOnClickListener(v -> updateSpinner1Values(R.array.categories1));
+        radioButton2.setOnClickListener(v -> updateSpinner1Values(R.array.categories2));
         generateButton.setOnClickListener(v -> generatePlan());
+    }
+
+    private void updateSpinner1Values(int arrayResId) {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                arrayResId, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter);
     }
 
     private void generatePlan() {

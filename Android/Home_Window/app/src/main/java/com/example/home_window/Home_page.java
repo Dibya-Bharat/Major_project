@@ -25,20 +25,20 @@ import com.google.firebase.database.ValueEventListener;
 public class Home_page extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private TextView emptyTextView;
-    private Button bt1, livesupport, allplans;
+    private Button gen_plan_form, livesupport, allplans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         emptyTextView = findViewById(R.id.emptyTextView);
-        checkForPlans();
+        //checkForPlans();
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         allplans = findViewById(R.id.btnAllPlans);
-        bt1 = findViewById(R.id.btnRecomGen);
+        gen_plan_form = findViewById(R.id.btnRecomGen);
         livesupport = findViewById(R.id.btnLiveSupport);
-        bt1.setOnClickListener(new View.OnClickListener() {
+        gen_plan_form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home_page.this, Generate_Plan_form.class);
