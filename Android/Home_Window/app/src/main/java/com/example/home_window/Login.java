@@ -24,7 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+//import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
@@ -108,10 +108,11 @@ public class Login extends AppCompatActivity {
         ValueEventListener phoneListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                boolean phoneNumberExists = false;
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     String phone = userSnapshot.child("phone").getValue(String.class);
                     if (phone != null && phone.equals(number)) {
+
+                        Log.d("number for otp",number);
                         //sendOTP(number);
                         PhoneAuthOptions options =
                                 PhoneAuthOptions.newBuilder(mAuth)
@@ -237,7 +238,7 @@ public class Login extends AppCompatActivity {
         // below method is used when
         // OTP is sent from Firebase
         @Override
-        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             // when we receive the OTP it
             // contains a unique id which
