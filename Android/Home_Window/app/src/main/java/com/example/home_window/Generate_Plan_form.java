@@ -7,15 +7,25 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 import org.tensorflow.lite.Interpreter;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.widget.ArrayAdapter;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.util.HashMap;
+import java.util.Map;
+
+
 
 public class Generate_Plan_form extends AppCompatActivity {
 
@@ -28,6 +38,8 @@ public class Generate_Plan_form extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference reference;
     private Button generateButton;
+
+    private static final String MODEL_PATH = "my_model.tflite";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +48,14 @@ public class Generate_Plan_form extends AppCompatActivity {
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        try {
+            interpreter = new Interpreter(loadModelFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // Initialize the TensorFlow Lite interpreter with your model
-        //interpreter = new Interpreter(modelfile);
-        modelHelper = new TensorFlowModelHelper(interpreter);
+        //modelHelper = new TensorFlowModelHelper(interpreter);
 
         radioButton1 = findViewById(R.id.radioButton);
         radioButton2 = findViewById(R.id.radioButton2);
@@ -47,47 +64,51 @@ public class Generate_Plan_form extends AppCompatActivity {
         spinner3 = findViewById(R.id.spinner3);
         spinner4 = findViewById(R.id.spinner4);
         generateButton = findViewById(R.id.button3);
-        // Set default spinner values
-        //updateSpinner1Values(R.array.categories1);
-        // Set listeners for radio buttons
-        radioButton1.setOnClickListener(v -> updateSpinner1Values(R.array.categories1));
-        radioButton2.setOnClickListener(v -> updateSpinner1Values(R.array.categories2));
+
+        radioButton1.setOnClickListener(v -> updateCategories(R.array.categories1));
+        radioButton2.setOnClickListener(v -> updateCategories(R.array.categories2));
         generateButton.setOnClickListener(v -> generatePlan());
     }
 
-    private void updateSpinner1Values(int arrayResId) {
+    private void updateCategories(int arrayResId) {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 arrayResId, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter);
     }
 
+    private MappedByteBuffer loadModelFile() throws IOException {
+        FileInputStream inputStream = new FileInputStream(getAssets().open("my_model.tflite"));
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = 0;
+        long declaredLength = fileChannel.size();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
+    }
+
     private void generatePlan() {
         // Retrieve data from UI components
-        String radioValue = radioButton1.isChecked() ? radioButton1.getText().toString() : radioButton2.getText().toString();
-        String spinner1Value = spinner1.getSelectedItem().toString();
+        String State = radioButton1.isChecked() ? radioButton1.getText().toString() : radioButton2.getText().toString();
+        String Category = spinner1.getSelectedItem().toString();
         String spinner2Value = spinner2.getSelectedItem().toString();
-        float floatValue = Float.parseFloat(spinner2Value);
-        String spinner3Value = spinner3.getSelectedItem().toString();
-        String spinner4Value = spinner4.getSelectedItem().toString();
+        float Rating = Float.parseFloat(spinner2Value);
+        String Accomod = spinner3.getSelectedItem().toString();
+        String TravelPf = spinner4.getSelectedItem().toString();
 
-        // Prepare input data
-        float[] inputData = {
-                // Define your input data here based on the UI components
-        };
 
-        // Send data to the TensorFlow model and get results
-        float[] results = modelHelper.runInference(inputData);
+        
 
-        // Create an Intent object to navigate to the next activity
+        String results = "";
+
+
+
         Intent intent = new Intent(Generate_Plan_form.this, Preview_Plan.class);
 
         // Put the data you want to pass into the Intent using a key-value pair
-        intent.putExtra("KEY1", radioValue);
-        intent.putExtra("KEY2", spinner1Value);
-        intent.putExtra("KEY3", floatValue);
-        intent.putExtra("KEY4", spinner3Value);
-        intent.putExtra("KEY5", spinner4Value);
+        intent.putExtra("KEY1", State);
+        intent.putExtra("KEY2", Category);
+        intent.putExtra("KEY3", Rating);
+        intent.putExtra("KEY4", Accomod);
+        intent.putExtra("KEY5", TravelPf);
         intent.putExtra("KEY6", results);
 
         // Start the next activity
