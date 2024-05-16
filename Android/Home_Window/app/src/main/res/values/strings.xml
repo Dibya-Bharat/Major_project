@@ -24,9 +24,8 @@
         <item>Wildlife</item>
     </string-array>
     <string-array name="ratings">
-        <item>4.5+</item>
-        <item>4.0+</item>
-        <item>3.5+</item>
+        <item>4.5</item>
+        <item>4.0</item>
     </string-array>
     <string-array name="Accomodation_types">
         <item>Hotels</item>
