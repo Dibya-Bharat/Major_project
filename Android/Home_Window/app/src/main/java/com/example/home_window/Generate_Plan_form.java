@@ -228,8 +228,6 @@ public class Generate_Plan_form extends AppCompatActivity {
             return 0;
     }
 
-<<<<<<< Updated upstream
-=======
         public static int encodeRating(float rating) {
             if (rating == 4.0f) {
                 return 0;
@@ -268,7 +266,6 @@ public class Generate_Plan_form extends AppCompatActivity {
             return 0;
         }
 
->>>>>>> Stashed changes
 
 
     public boolean onCreateOptionsMenu(Menu menu){
