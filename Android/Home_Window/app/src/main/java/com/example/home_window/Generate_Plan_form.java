@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-
+import java.io.*;
 import org.tensorflow.lite.Interpreter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,11 +48,11 @@ public class Generate_Plan_form extends AppCompatActivity {
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        try {
+        /*try {
             interpreter = new Interpreter(loadModelFile());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // Initialize the TensorFlow Lite interpreter with your model
         //modelHelper = new TensorFlowModelHelper(interpreter);
@@ -77,13 +77,13 @@ public class Generate_Plan_form extends AppCompatActivity {
         spinner1.setAdapter(adapter);
     }
 
-    private MappedByteBuffer loadModelFile() throws IOException {
+    /*private MappedByteBuffer loadModelFile() throws IOException {
         FileInputStream inputStream = new FileInputStream(getAssets().open("my_model.tflite"));
         FileChannel fileChannel = inputStream.getChannel();
         long startOffset = 0;
         long declaredLength = fileChannel.size();
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
-    }
+    }*/
 
     private void generatePlan() {
         // Retrieve data from UI components
@@ -113,6 +113,12 @@ public class Generate_Plan_form extends AppCompatActivity {
 
         // Start the next activity
         startActivity(intent);
+    }
+
+    private String getplaces(){
+        String pythonScriptPath = "process_input.py";
+        ProcessBuilder processBuilder = new ProcessBuilder("python3", pythonScriptPath);
+        return "";
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
