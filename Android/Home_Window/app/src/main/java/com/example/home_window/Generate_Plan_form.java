@@ -115,11 +115,7 @@ public class Generate_Plan_form extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private String getplaces(){
-        String pythonScriptPath = "process_input.py";
-        ProcessBuilder processBuilder = new ProcessBuilder("python3", pythonScriptPath);
-        return "";
-    }
+
 
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();

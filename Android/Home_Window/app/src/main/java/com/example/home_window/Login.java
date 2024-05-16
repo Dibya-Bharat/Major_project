@@ -104,6 +104,47 @@ public class Login extends AppCompatActivity {
     private void sendVerificationCode(final String number) {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
+        ValueEventListener phoneListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean isNumberRegistered = false;
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    String phone = userSnapshot.child("phone").getValue(String.class);
+                    if (number.equals(phone)) {
+                        isNumberRegistered = true;
+                        break;
+                    }
+                }
+                if (isNumberRegistered) {
+                    initiatePhoneVerification(number);
+                } else {
+                    Toast.makeText(Login.this, "Phone number not registered. Please proceed with SignUp.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Login.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        usersRef.addListenerForSingleValueEvent(phoneListener);
+    }
+
+    private void initiatePhoneVerification(String number) {
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(mAuth)
+                        .setPhoneNumber(number)
+                        .setTimeout(60L, TimeUnit.SECONDS)
+                        .setActivity(Login.this)
+                        .setCallbacks(mCallBack)
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+        Toast.makeText(Login.this, "OTP sent successfully.", Toast.LENGTH_SHORT).show();
+    }
+    /*private void sendVerificationCode(final String number) {
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+
         // Add a ValueEventListener to check if the phone number already exists
         ValueEventListener phoneListener = new ValueEventListener() {
             @Override
@@ -139,7 +180,7 @@ public class Login extends AppCompatActivity {
 
         // Attach the listener to the users reference
         usersRef.addListenerForSingleValueEvent(phoneListener);
-    }
+    }*/
 
 
 
