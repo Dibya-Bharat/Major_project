@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
-            android:text="Create Plan" />
+            android:text="Create Plan"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnAllPlans"
@@ -42,7 +43,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
-            android:text="All Plans" />
+            android:text="All Plans"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnLiveSupport"
@@ -50,7 +52,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
-            android:text="Live Support" />
+            android:text="Live Support"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btnUserProfile"
@@ -58,7 +61,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#000080"
             android:layout_weight="1"
-            android:text="User Profile" />
+            android:text="User Profile"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <TextView

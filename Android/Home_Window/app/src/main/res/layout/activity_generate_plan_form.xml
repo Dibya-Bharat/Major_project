@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="State"
+            android:textColor="@color/black"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="56dp" />
@@ -56,6 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delhi"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="105dp"
                 tools:layout_editor_absoluteY="45dp" />
@@ -65,6 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Uttarakhand"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="105dp"
                 tools:layout_editor_absoluteY="104dp" />
@@ -81,6 +84,7 @@
             android:layout_height="wrap_content"
             android:text="Category of Tourism Spots:"
             android:textSize="20sp"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="190dp" />
 
@@ -97,6 +101,7 @@
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
+                android:textColor="@color/black"
                 android:entries="@array/categories1"
                 tools:layout_editor_absoluteX="261dp"
                 tools:layout_editor_absoluteY="237dp" />
@@ -111,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:entries="@array/ratings"/>
         </LinearLayout>
 
@@ -124,6 +130,7 @@
             android:layout_height="wrap_content"
             android:text="Accomodation Preference:"
             android:textSize="20sp"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="282dp" />
 
@@ -136,6 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:entries="@array/Accomodation_types"/>
 
         <Space
@@ -148,6 +156,7 @@
             android:layout_height="wrap_content"
             android:text="Travel Mode Preference:"
             android:textSize="20sp"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="345dp" />
 
@@ -160,6 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:entries="@array/Travel_Modes"/>
 
     </LinearLayout>
@@ -170,6 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Generate"
+        android:textColor="@color/white"
         android:backgroundTint="#000080"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
