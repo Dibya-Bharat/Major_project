@@ -168,9 +168,9 @@ public class Generate_Plan_form extends AppCompatActivity {
         input[0][2] = encodedRating;
 
         Log.d("full input","input"+ Arrays.deepToString(input));
-        Log.d("Input for model", "Result 1: " + input[0][0]);
-        Log.d("Input for model", "Result 2: " + input[0][1]);
-        Log.d("Input for model", "Result 3: " + input[0][2]);
+        Log.d("Input for model", "Input 1: " + input[0][0]);
+        Log.d("Input for model", "Input 2: " + input[0][1]);
+        Log.d("Input for model", "Input 3: " + input[0][2]);
 
         float[][] output1 = new float[1][83];
         float[][] output2 = new float[1][86];
