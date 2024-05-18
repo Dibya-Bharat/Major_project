@@ -40,7 +40,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="State"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Category"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/Rating"
@@ -61,49 +65,62 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Rating"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
+
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10sp" />
 
         <TextView
             android:id="@+id/Place1"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:clickable="true"
             android:text="Place1"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/Place2"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:clickable="true"
             android:text="Place2"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/Place3"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:clickable="true"
             android:text="Place3"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10sp" />
 
         <TextView
             android:id="@+id/Accommodation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Accommodation"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10sp" />
 
         <TextView
             android:id="@+id/Travel_Mode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Travel_Mode"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
 
     </LinearLayout>

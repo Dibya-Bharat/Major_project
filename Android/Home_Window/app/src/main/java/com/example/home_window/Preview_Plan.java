@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -44,28 +46,29 @@ public class Preview_Plan extends AppCompatActivity {
         data3 = intent.getStringExtra("KEY3");
         data4 = intent.getStringExtra("KEY4");
         data5 = intent.getStringExtra("KEY5");
-        data6 = intent.getStringExtra("KEY6").split(","); // Assuming KEY6 contains comma-separated values
+        data6 = intent.getStringArrayExtra("KEY6"); // Assuming KEY6 contains comma-separated values
 
-        state.setText(data1);
-        category.setText(data2);
-        rating.setText(data3);
-        accommodation.setText(data4);
-        travel_mode.setText(data5);
+        state.setText(String.format("State: %s", data1));
+        category.setText(String.format("Category: %s", data2));
+        rating.setText(String.format("Rating: %s", data3));
+        accommodation.setText(String.format("Accommodation: %s", data4));
+        travel_mode.setText(String.format("Travel Mode: %s", data5));
         place1.setText(data6[0]);
         place2.setText(data6[1]);
         place3.setText(data6[2]);
 
         place1.setOnClickListener(v -> {
-            // Handle click for place1
+            navigateToPlace(data6[0],data1);
         });
 
         place2.setOnClickListener(v -> {
-            // Handle click for place2
+            navigateToPlace(data6[1],data1);
         });
 
         place3.setOnClickListener(v -> {
-            // Handle click for place3
+            navigateToPlace(data6[2],data1);
         });
+
 
         savebtn.setOnClickListener(v -> saveDataToFirebase());
     }
@@ -92,6 +95,29 @@ public class Preview_Plan extends AppCompatActivity {
                     Toast.makeText(Preview_Plan.this, "Failed to save plan", Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+    }
+
+    private void navigateToPlace(String place,String state) {
+        String travelMode = data5.toLowerCase();
+        String mode = "d";
+        switch (travelMode) {
+            case "bus":
+                mode = "transit";
+                break;
+            case "car":
+                mode = "driving";
+                break;
+            case "train":
+                mode = "transit";
+                break;
+        }
+        Log.d("travel preference",travelMode);
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Uri.encode(place+","+state+",India") + "&mode=" + mode);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
         }
     }
 

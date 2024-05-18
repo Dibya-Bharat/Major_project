@@ -192,22 +192,23 @@ public class Generate_Plan_form extends AppCompatActivity {
         Log.d("Generate_Plan_form", "Place 3: " + place3Name);
 
         // Show the results in a Toast
-        String message = "Place 1: " + place1Name + "\nPlace 2: " + place2Name + "\nPlace 3: " + place3Name;
-        Toast.makeText(Generate_Plan_form.this, message, Toast.LENGTH_LONG).show();
+        //String message = "Place 1: " + place1Name + "\nPlace 2: " + place2Name + "\nPlace 3: " + place3Name;
+        String[] results = {place1Name,place2Name,place3Name};
+        //Toast.makeText(Generate_Plan_form.this, message, Toast.LENGTH_LONG).show();
 
 //
-//        Intent intent = new Intent(Generate_Plan_form.this, Preview_Plan.class);
-//
-//        // Put the data you want to pass into the Intent using a key-value pair
-//        intent.putExtra("KEY1", State);
-//        intent.putExtra("KEY2", Category);
-//        intent.putExtra("KEY3", Rating);
-//        intent.putExtra("KEY4", Accomod);
-//        intent.putExtra("KEY5", TravelPf);
-//        intent.putExtra("KEY6", results);
-//
-//        // Start the next activity
-//        startActivity(intent);
+        Intent intent = new Intent(Generate_Plan_form.this, Preview_Plan.class);
+
+        // Put the data you want to pass into the Intent using a key-value pair
+        intent.putExtra("KEY1", State);
+        intent.putExtra("KEY2", Category);
+        intent.putExtra("KEY3", spinner2Value);
+        intent.putExtra("KEY4", Accomod);
+        intent.putExtra("KEY5", TravelPf);
+        intent.putExtra("KEY6", results);
+
+        // Start the next activity
+        startActivity(intent);
     }
     private String decodePlace(String[] places, float[] output) {
         int maxIndex = 0;
@@ -286,5 +287,6 @@ public class Generate_Plan_form extends AppCompatActivity {
         firebaseAuth.signOut();
         Intent intent = new Intent(Generate_Plan_form.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }
