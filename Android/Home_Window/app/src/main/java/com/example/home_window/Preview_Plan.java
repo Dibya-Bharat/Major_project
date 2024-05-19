@@ -20,7 +20,7 @@ public class Preview_Plan extends AppCompatActivity {
     private TextView state, category, rating, place1, place2, place3, accommodation, travel_mode;
     private Button savebtn;
     private Intent intent;
-    private String data1, data2, data3, data4, data5;
+    private String data1, data2, data3, data4, data5, user_name;
     private String[] data6;
 
     @Override
@@ -40,7 +40,7 @@ public class Preview_Plan extends AppCompatActivity {
         accommodation = findViewById(R.id.Accommodation);
         travel_mode = findViewById(R.id.Travel_Mode);
         savebtn = findViewById(R.id.savebutton);
-
+        user_name = intent.getStringExtra("USER_NAME");
         data1 = intent.getStringExtra("KEY1");
         data2 = intent.getStringExtra("KEY2");
         data3 = intent.getStringExtra("KEY3");
@@ -82,11 +82,11 @@ public class Preview_Plan extends AppCompatActivity {
         String planId = myRef.push().getKey();
 
         // Create a Plan object
-        Plan plan = new Plan(data1, data2, data3, data4, data5, data6[0], data6[1], data6[2]);
+        Plan plan = new Plan(user_name, data1, data2, data3, data4, data5, data6[0], data6[1], data6[2]);
 
         // Save the plan to Firebase under the generated unique ID
         if (planId != null) {
-            myRef.child(planId).setValue(plan).addOnCompleteListener(task -> {
+            myRef.child(user_name).child(planId).setValue(plan).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     // Data saved successfully
                     Toast.makeText(Preview_Plan.this, "Plan saved successfully", Toast.LENGTH_SHORT).show();
@@ -124,6 +124,7 @@ public class Preview_Plan extends AppCompatActivity {
     // Plan class to hold the plan data
     public static class Plan {
         public String state;
+        public String user_name;
         public String category;
         public String rating;
         public String accommodation;
@@ -132,7 +133,8 @@ public class Preview_Plan extends AppCompatActivity {
         public String place2;
         public String place3;
 
-        public Plan(String state, String category, String rating, String accommodation, String travel_mode, String place1, String place2, String place3) {
+        public Plan(String user_name, String state, String category, String rating, String accommodation, String travel_mode, String place1, String place2, String place3) {
+            this.user_name = user_name;
             this.state = state;
             this.category = category;
             this.rating = rating;

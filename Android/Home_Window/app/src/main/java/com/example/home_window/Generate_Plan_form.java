@@ -37,7 +37,7 @@ public class Generate_Plan_form extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private Interpreter interpreter;
     private TensorFlowModelHelper modelHelper;
-
+    private String user_name;
     private FirebaseDatabase db;
     private DatabaseReference reference;
     private Button generateButton;
@@ -50,7 +50,7 @@ public class Generate_Plan_form extends AppCompatActivity {
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        user_name = getIntent().getStringExtra("USER_NAME");
         radioButton1 = findViewById(R.id.radioButton);
         radioButton2 = findViewById(R.id.radioButton2);
         spinner1 = findViewById(R.id.spinner);
@@ -167,10 +167,7 @@ public class Generate_Plan_form extends AppCompatActivity {
         input[0][1] = encodedCategory;
         input[0][2] = encodedRating;
 
-        Log.d("full input","input"+ Arrays.deepToString(input));
-        Log.d("Input for model", "Input 1: " + input[0][0]);
-        Log.d("Input for model", "Input 2: " + input[0][1]);
-        Log.d("Input for model", "Input 3: " + input[0][2]);
+
 
         float[][] output1 = new float[1][83];
         float[][] output2 = new float[1][86];
@@ -187,9 +184,7 @@ public class Generate_Plan_form extends AppCompatActivity {
         String place2Name = decodePlace(place2, output2[0]);
         String place3Name = decodePlace(place3, output3[0]);
 
-        Log.d("Generate_Plan_form", "Place 1: " + place1Name);
-        Log.d("Generate_Plan_form", "Place 2: " + place2Name);
-        Log.d("Generate_Plan_form", "Place 3: " + place3Name);
+
 
         // Show the results in a Toast
         //String message = "Place 1: " + place1Name + "\nPlace 2: " + place2Name + "\nPlace 3: " + place3Name;
@@ -206,6 +201,7 @@ public class Generate_Plan_form extends AppCompatActivity {
         intent.putExtra("KEY4", Accomod);
         intent.putExtra("KEY5", TravelPf);
         intent.putExtra("KEY6", results);
+        intent.putExtra("USER_NAME",user_name);
 
         // Start the next activity
         startActivity(intent);

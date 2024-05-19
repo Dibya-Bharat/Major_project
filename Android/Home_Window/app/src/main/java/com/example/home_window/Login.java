@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 public class Login extends AppCompatActivity {
 
     private static final String TAG = "Login";
-
+    private String enteredPhoneNumber;
     private FirebaseAuth mAuth;
     private EditText edtPhone, edtOTP;
     private Button verifyOTPBtn, generateOTPBtn;
@@ -126,6 +126,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void sendVerificationCode(final String number) {
+        enteredPhoneNumber = number;
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
         ValueEventListener phoneListener = new ValueEventListener() {
@@ -134,6 +135,7 @@ public class Login extends AppCompatActivity {
                 boolean isNumberRegistered = false;
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     String phone = userSnapshot.child("phone").getValue(String.class);
+
                     if (number.equals(phone)) {
                         isNumberRegistered = true;
                         break;
@@ -190,10 +192,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = task.getResult().getUser();
-                            updateUI(user);
-                            Intent i = new Intent(Login.this, Home_page.class);
-                            startActivity(i);
-                            finish();
+                            fetchUserNameAndNavigate(user);
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
@@ -203,6 +202,32 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void fetchUserNameAndNavigate(FirebaseUser user) {
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+        usersRef.orderByChild("phone").equalTo(enteredPhoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        String name = userSnapshot.child("name").getValue(String.class);
+                        // Pass the user's name to the homepage
+                        Intent i = new Intent(Login.this, Home_page.class);
+                        i.putExtra("USER_NAME", name);
+                        startActivity(i);
+                        finish();
+                        break;
+                    }
+                } else {
+                    Toast.makeText(Login.this, "User data not found.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Login.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void updateUI(FirebaseUser user) {

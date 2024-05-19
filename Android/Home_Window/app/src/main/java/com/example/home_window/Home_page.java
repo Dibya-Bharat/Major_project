@@ -1,11 +1,14 @@
 package com.example.home_window;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,24 +27,42 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Home_page extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private TextView emptyTextView;
-    private Button gen_plan_form, livesupport, allplans;
+    private TextView state, category, rating, place1, place2, place3, accommodation, travel_mode;
+    private String user_name;
+    private TextView  un;
+    private Button gen_plan_form, livesupport, allplans, userprofile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        emptyTextView = findViewById(R.id.emptyTextView);
-        //checkForPlans();
+
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
-        allplans = findViewById(R.id.btnAllPlans);
+        state = findViewById(R.id.State);
+        category = findViewById(R.id.Category);
+        rating = findViewById(R.id.Rating);
+        place1 = findViewById(R.id.Place1);
+        place2 = findViewById(R.id.Place2);
+        place3 = findViewById(R.id.Place3);
+        accommodation = findViewById(R.id.Accommodation);
+        travel_mode = findViewById(R.id.Travel_Mode);
+        //allplans = findViewById(R.id.btnAllPlans);
         gen_plan_form = findViewById(R.id.btnRecomGen);
         livesupport = findViewById(R.id.btnLiveSupport);
+        userprofile = findViewById(R.id.btnUserProfile);
+        un = findViewById(R.id.user_name);
+        user_name = getIntent().getStringExtra("USER_NAME");
+        if (user_name != null) {
+            // Update your UI with the user's name
+
+            un.setText("Welcome, " + user_name + "!");
+        }
         gen_plan_form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home_page.this, Generate_Plan_form.class);
+                intent.putExtra("USER_NAME",user_name);
                 startActivity(intent);
             }
         });
@@ -52,43 +73,26 @@ public class Home_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        allplans.setOnClickListener(new View.OnClickListener() {
+        /*allplans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home_page.this, Allplans.class);
+                intent.putExtra("USER_NAME",user_name);
+                startActivity(intent);
+            }
+        });*/
+        userprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home_page.this, User_Profile.class);
+                intent.putExtra("USER_NAME",user_name);
                 startActivity(intent);
             }
         });
+        fetchLatestPlan();
 
     }
-    private void checkForPlans() {
-        // Get a reference to the Firebase database
-        DatabaseReference plansRef = FirebaseDatabase.getInstance().getReference("plans");
 
-        // Query to check if any plans exist
-        Query plansQuery = plansRef.limitToFirst(1); // Limit to the first plan (if any)
-
-        plansQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // Plans exist, hide the empty text and show bottom navigation
-                    emptyTextView.setVisibility(View.GONE);
-
-                } else {
-                    // No plans exist, show the empty text and hide bottom navigation
-                    emptyTextView.setVisibility(View.VISIBLE);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
-                Toast.makeText(Home_page.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.home_menu, menu);
@@ -107,5 +111,37 @@ public class Home_page extends AppCompatActivity {
         firebaseAuth.signOut();
         Intent intent = new Intent(Home_page.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void fetchLatestPlan() {
+        DatabaseReference plansRef = FirebaseDatabase.getInstance().getReference("plans").child(user_name);
+        plansRef.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Generate_plans plan = snapshot.getValue(Generate_plans.class);
+                        if (plan != null) {
+                            state.setText(plan.getState());
+                            category.setText(plan.getCategory());
+                            rating.setText(plan.getRating());
+                            place1.setText(plan.getPlace1());
+                            place2.setText(plan.getPlace2());
+                            place3.setText(plan.getPlace3());
+                            accommodation.setText(plan.getAccommodation());
+                            travel_mode.setText(plan.getTravelMode());
+                        }
+                    }
+                } else {
+                    Toast.makeText(Home_page.this, "No plans found.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "fetchLatestPlan:onCancelled", databaseError.toException());
+                Toast.makeText(Home_page.this, "Failed to load the latest plan.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
