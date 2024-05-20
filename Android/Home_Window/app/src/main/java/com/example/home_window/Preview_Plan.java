@@ -82,7 +82,8 @@ public class Preview_Plan extends AppCompatActivity {
         String planId = myRef.push().getKey();
 
         // Create a Plan object
-        Plan plan = new Plan(user_name, data1, data2, data3, data4, data5, data6[0], data6[1], data6[2]);
+
+        Generate_plans plan = new Generate_plans(user_name, data1, data2, data3, data4, data5, data6[0], data6[1], data6[2]);
 
         // Save the plan to Firebase under the generated unique ID
         if (planId != null) {

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +50,13 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        // Initialize Firebase App Check
+        FirebaseApp.initializeApp(this);
+        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+        firebaseAppCheck.installAppCheckProviderFactory(
+                PlayIntegrityAppCheckProviderFactory.getInstance()
+        );
 
         mAuth = FirebaseAuth.getInstance();
         edtPhone = findViewById(R.id.idEdtPhoneNumber);
@@ -111,9 +121,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onCodeSent(@NonNull String verificationId,
                                    @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                Log.d(TAG, "onCodeSent:" + verificationId);
+                Log.d(TAG, "onCodeSent: verificationId = " + verificationId);
                 mVerificationId = verificationId;
                 mResendToken = token;
+                Toast.makeText(Login.this, "OTP sent successfully", Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -126,6 +137,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void sendVerificationCode(final String number) {
+        Log.d(TAG, "sendVerificationCode: number = " + number);
         enteredPhoneNumber = number;
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -158,6 +170,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void startPhoneNumberVerification(String phoneNumber) {
+        Log.d(TAG, "startPhoneNumberVerification: phoneNumber = " + phoneNumber);
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber(phoneNumber)
                 .setTimeout(60L, TimeUnit.SECONDS)
@@ -165,10 +178,11 @@ public class Login extends AppCompatActivity {
                 .setCallbacks(mCallbacks)
                 .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
-        Toast.makeText(Login.this, "OTP sent successfully.", Toast.LENGTH_SHORT).show();
+
     }
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
+        Log.d(TAG, "verifyPhoneNumberWithCode: verificationId = " + verificationId + ", code = " + code);
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithPhoneAuthCredential(credential);
     }
@@ -185,6 +199,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        Log.d(TAG, "signInWithPhoneAuthCredential");
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -203,6 +218,7 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
+
     private void fetchUserNameAndNavigate(FirebaseUser user) {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
         usersRef.orderByChild("phone").equalTo(enteredPhoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -216,10 +232,7 @@ public class Login extends AppCompatActivity {
                         i.putExtra("USER_NAME", name);
                         startActivity(i);
                         finish();
-                        break;
                     }
-                } else {
-                    Toast.makeText(Login.this, "User data not found.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -231,6 +244,13 @@ public class Login extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        // Update your UI based on the user object.
+        if (user != null) {
+            // User is signed in
+            Toast.makeText(Login.this, "Signed in successfully", Toast.LENGTH_SHORT).show();
+            // Navigate to home page or update the UI accordingly
+        } else {
+            // User is signed out
+            Toast.makeText(Login.this, "Signed out", Toast.LENGTH_SHORT).show();
+        }
     }
 }

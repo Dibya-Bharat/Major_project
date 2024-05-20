@@ -58,6 +58,13 @@ public class Home_page extends AppCompatActivity {
 
             un.setText("Welcome, " + user_name + "!");
         }
+        else {
+            Log.e(TAG, "user_name is null in Home_page");
+            Toast.makeText(this, "Error: No user found", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        fetchLatestPlan();
         gen_plan_form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +96,7 @@ public class Home_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        fetchLatestPlan();
+
 
     }
 
@@ -111,6 +118,7 @@ public class Home_page extends AppCompatActivity {
         firebaseAuth.signOut();
         Intent intent = new Intent(Home_page.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void fetchLatestPlan() {
@@ -122,14 +130,14 @@ public class Home_page extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Generate_plans plan = snapshot.getValue(Generate_plans.class);
                         if (plan != null) {
-                            state.setText(plan.getState());
-                            category.setText(plan.getCategory());
-                            rating.setText(plan.getRating());
-                            place1.setText(plan.getPlace1());
-                            place2.setText(plan.getPlace2());
-                            place3.setText(plan.getPlace3());
-                            accommodation.setText(plan.getAccommodation());
-                            travel_mode.setText(plan.getTravelMode());
+                            state.setText(String.format("State: %s", plan.getState()));
+                            category.setText(String.format("Category: %s", plan.getCategory()));
+                            rating.setText(String.format("Rating: %s", plan.getRating()));
+                            place1.setText(String.format("Place 1: %s", plan.getPlace1()));
+                            place2.setText(String.format("Place 2: %s", plan.getPlace2()));
+                            place3.setText(String.format("Place 3: %s", plan.getPlace3()));
+                            accommodation.setText(String.format("Accommodation: %s", plan.getAccommodation()));
+                            travel_mode.setText(String.format("Hotels: %s", plan.getTravelMode()));
                         }
                     }
                 } else {
@@ -140,7 +148,7 @@ public class Home_page extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.w(TAG, "fetchLatestPlan:onCancelled", databaseError.toException());
-                Toast.makeText(Home_page.this, "Failed to load the latest plan.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Home_page.this, "Failed to load your last plan.", Toast.LENGTH_SHORT).show();
             }
         });
     }

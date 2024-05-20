@@ -60,6 +60,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.android.play:integrity:1.3.0")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity:18.0.0")
 
 }
 secrets {
