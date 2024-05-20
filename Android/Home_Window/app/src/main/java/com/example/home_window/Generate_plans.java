@@ -11,6 +11,9 @@ public class Generate_plans {
     public String place2;
     public String place3;
 
+    public Generate_plans(){
+
+    }
     public Generate_plans(String user_name, String state, String category, String rating, String accommodation, String travel_mode, String place1, String place2, String place3) {
         this.user_name = user_name;
         this.state = state;

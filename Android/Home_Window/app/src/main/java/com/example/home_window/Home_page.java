@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +32,7 @@ public class Home_page extends AppCompatActivity {
     private String user_name;
     private TextView  un;
     private Button gen_plan_form, livesupport, allplans, userprofile;
+    private Generate_plans plan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +98,17 @@ public class Home_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        place1.setOnClickListener(v -> {
+            navigateToPlace(place1.getText().toString(), state.getText().toString());
+        });
 
+        place2.setOnClickListener(v -> {
+            navigateToPlace(place2.getText().toString(), state.getText().toString());
+        });
+
+        place3.setOnClickListener(v -> {
+            navigateToPlace(place3.getText().toString(), state.getText().toString());
+        });
 
     }
 
@@ -151,5 +163,27 @@ public class Home_page extends AppCompatActivity {
                 Toast.makeText(Home_page.this, "Failed to load your last plan.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void navigateToPlace(String place,String state) {
+        String travelMode = travel_mode.getText().toString();
+        String mode = "d";
+        switch (travelMode) {
+            case "bus":
+                mode = "transit";
+                break;
+            case "car":
+                mode = "driving";
+                break;
+            case "train":
+                mode = "transit";
+                break;
+        }
+        Log.d("travel preference",travelMode);
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Uri.encode(place+","+state+",India") + "&mode=" + mode);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
     }
 }
