@@ -244,13 +244,6 @@ public class Login extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            // User is signed in
-            Toast.makeText(Login.this, "Signed in successfully", Toast.LENGTH_SHORT).show();
-            // Navigate to home page or update the UI accordingly
-        } else {
-            // User is signed out
-            Toast.makeText(Login.this, "Signed out", Toast.LENGTH_SHORT).show();
-        }
+
     }
 }
