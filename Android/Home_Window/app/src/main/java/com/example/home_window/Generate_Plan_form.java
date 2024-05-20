@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 import org.tensorflow.lite.Interpreter;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.widget.ArrayAdapter;
@@ -68,6 +69,15 @@ public class Generate_Plan_form extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(Generate_Plan_form.this, Home_page.class);
+                intent.putExtra("USER_NAME",user_name);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private MappedByteBuffer loadModelFile() throws IOException {

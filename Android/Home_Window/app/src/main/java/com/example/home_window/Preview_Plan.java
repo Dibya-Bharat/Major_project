@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.activity.OnBackPressedCallback;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,6 +40,7 @@ public class Preview_Plan extends AppCompatActivity {
         accommodation = findViewById(R.id.Accommodation);
         travel_mode = findViewById(R.id.Travel_Mode);
         savebtn = findViewById(R.id.savebutton);
+
         user_name = intent.getStringExtra("USER_NAME");
         data1 = intent.getStringExtra("KEY1");
         data2 = intent.getStringExtra("KEY2");
@@ -71,7 +72,17 @@ public class Preview_Plan extends AppCompatActivity {
 
 
         savebtn.setOnClickListener(v -> saveDataToFirebase());
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(Preview_Plan.this, Home_page.class);
+                intent.putExtra("USER_NAME",user_name);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
 
     private void saveDataToFirebase() {
         // Get Firebase Database reference
@@ -91,6 +102,7 @@ public class Preview_Plan extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     // Data saved successfully
                     Toast.makeText(Preview_Plan.this, "Plan saved successfully", Toast.LENGTH_SHORT).show();
+
                 } else {
                     // Failed to save data
                     Toast.makeText(Preview_Plan.this, "Failed to save plan", Toast.LENGTH_SHORT).show();
@@ -121,6 +133,7 @@ public class Preview_Plan extends AppCompatActivity {
             startActivity(mapIntent);
         }
     }
+
 
     // Plan class to hold the plan data
     public static class Plan {
