@@ -111,28 +111,38 @@ public class Preview_Plan extends AppCompatActivity {
         }
     }
 
-    private void navigateToPlace(String place,String state) {
+    private void navigateToPlace(String place, String state) {
         String travelMode = data5.toLowerCase();
-        String mode = "d";
+        String mode = "d"; // Default mode (driving)
+
         switch (travelMode) {
             case "bus":
-                mode = "transit";
-                break;
-            case "car":
-                mode = "driving";
-                break;
             case "train":
                 mode = "transit";
                 break;
+            case "car":
+                mode = "d";
+                break;
         }
-        Log.d("travel preference",travelMode);
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Uri.encode(place+","+state+",India") + "&mode=" + mode);
+
+        Log.d("travel preference", travelMode);
+
+        // Use the google.navigation URI scheme for navigation
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Uri.encode(place + "," + state + ",India") + "&mode=" + mode);
+
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
+
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
+        } else {
+            Log.e("Map Intent", "Google Maps app is not installed.");
         }
     }
+
+
+
+
 
 
     // Plan class to hold the plan data

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Home_page">
-        <State />
-      </entry>
-      <entry key="Splash_activity">
+      <entry key="Generate_Plan_form">
         <State />
       </entry>
       <entry key="app">
